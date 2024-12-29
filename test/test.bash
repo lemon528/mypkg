@@ -6,8 +6,7 @@ dir=~
 cd $dir/ros2_ws
 colcon build
 source $dir/.bashrc
-log_file="/tmp/resource_monitor.log"
-timeout 10 ros2 run mypkg resource_monitor > $log_file
+timeout 10 ros2 launch mypkg resource_monitor_listen.launch.py > /tmp/mypkg.log
 
-cat $log_file |
+cat /tmp/mypkg.log |
 grep 'CPU usage:'
