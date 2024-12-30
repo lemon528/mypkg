@@ -24,8 +24,6 @@ setup(
     entry_points={
         'console_scripts': [
             'talker = mypkg.talker:main',
-            'resource_monitor = mypkg.resource_monitor:main',
-            'listener = mypkg.listener:main',
         ],
     },
 )
