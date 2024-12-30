@@ -1,22 +1,43 @@
 import rclpy
 from rclpy.node import Node
-from std_msgs.msg import Int16
+from std_msgs.msg import Float32
+import math
+import time
 
-class Talker(Node):
+
+class NoisySensorSimulator(Node):
     def __init__(self):
-        super().__init__("talker")
-        self.pub = self.create_publisher(Int16, "countup", 10)
-        self.create_timer(0.5, self.cb)
-        self.n = 0
+        super().__init__("noisy_sensor_simulator")
+        self.publisher = self.create_publisher(Float32, "noisy_sensor_data", 10)
+        self.start_time = time.time()
+        self.create_timer(1.0, self.publish_sensor_data)
 
-    def cb(self):
-        msg = Int16()
-        msg.data = self.n
-        self.pub.publish(msg)
-        self.n += 1
+
+    def publish_sensor_data(self):
+        current_time = time.time() - self.start_time
+        base_value = 5.0 + 2.0 * math.sin(current_time)
+        noise = math.sin(current_time * 5) * 0.2
+        sensor_value = base_value + noise
+
+        msg = Float32()
+        msg.data = sensor_value
+        self.publisher.publish(msg)
+        self.get_logger().info(f"Noisy Sensor value: {sensor_value:.2f}")
 
 
 def main():
     rclpy.init()
-    node = Talker()
-    rclpy.spin(node)
+    node = NoisySensorSimulator()
+    try:
+        rclpy.spin(node)
+    except rclpy.executors.ExternalShutdownException:
+        pass
+    finally:
+        node.destroy_node()
+        if rclpy.ok():
+            rclpy.shutdown()
+
+
+
+if __name__ == "__main__":
+    main()
