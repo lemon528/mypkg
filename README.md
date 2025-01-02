@@ -37,8 +37,15 @@ $ ros2 launch mypkg sensor_simulator.launch.py
 [sensor_simulator-1] [INFO] [1735812561.735071482] [noisy_sensor_simulator]: Noisy Sensor value: 3.67
 ```
 
+## 必要ソフトウェア
+- Python version 3.10 以上
+- Ubuntu version 22.04 LTS 以上
+- ROS2 Humble
+
 ## テスト環境
+- Python 3.10.12
 - Ubuntu 22.04.5 LTS
+- ROS2 Humble
 
 ## ライセンス
 - このソフトウェアパッケージは、３条項BSDライセンスの下、再頒布および使用が許可されます。
