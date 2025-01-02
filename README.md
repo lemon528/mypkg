@@ -1,5 +1,6 @@
 # robosys2024_ROS2
 [![test](https://github.com/lemon528/robosys2024/actions/workflows/test.yml/badge.svg)](https://github.com/lemon528/robosys2024/actions/workflows/test.yml)
+ロボットシステム学授業用
 
 ## sensor_simulator
 ノイズ付きセンサー値をシミュレートし、それをトピックに配信します。
