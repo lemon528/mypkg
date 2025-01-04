@@ -25,7 +25,6 @@ class NoisySensorSimulator(Node):
         msg = Float32()
         msg.data = sensor_value
         self.publisher.publish(msg)
-        self.get_logger().info(f"Noisy Sensor value: {sensor_value:.2f}")
 
 
 def main():
