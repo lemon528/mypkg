@@ -10,7 +10,7 @@ import math
 class SensorSimulator(Node):
     def __init__(self):
         super().__init__("sensor_simulator")
-        self.publisher = self.create_publisher(Float32, "Noisy_sensor_data", 10)
+        self.publisher = self.create_publisher(Float32, "sensor_data", 10)
         self.step = 0
         self.create_timer(1.0, self.publish_sensor_data)
 

@@ -1,24 +1,9 @@
-# robosys2024_ROS2
+# mypkg
 [![test](https://github.com/lemon528/robosys2024/actions/workflows/test.yml/badge.svg)](https://github.com/lemon528/robosys2024/actions/workflows/test.yml)  
-ロボットシステム学授業用
+このリポジトリは、ROS2パッケージ`mypkg`を提供します。
 
 ## sensor_simulator
 ノイズ付きセンサー値をシミュレートし、それをトピックに配信します。
-
-## 使用方法
-- リポジトリをクローン
-- cdでディレクトリに移動
-- ワークスペースのビルド
-
-```
-$ git clone https://github.com/lemon528/robosys2024_ROS2.git
-
-$ cd ros2_ws
-
-$ colcon build
-
-$ source ~/.bashrc
-```
 
 ## 実行方法と出力結果
 - sensor_simulator
@@ -48,7 +33,7 @@ $ ros2 launch mypkg sensor_simulator.launch.py
 - ROS2 Humble
 
 ## ライセンス
-- このソフトウェアパッケージは、３条項BSDライセンスの下、再頒布および使用が許可されます。
+- このソフトウェアパッケージは、3条項BSDライセンスの下、再頒布および使用が許可されます。
 - このパッケージの一部のコードは、下記のスライド（CC-BY-SA 4.0 by Ryuichi Ueda）のものを、本人の許可を得て自身の著作としたものです。
     - https://ryuichiueda.github.io/slides_marp/robosys2024/lesson8.html#1
     - https://ryuichiueda.github.io/slides_marp/robosys2024/lesson9.html#1

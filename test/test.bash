@@ -7,7 +7,6 @@ dir=~
 
 cd $dir/ros2_ws
 colcon build
-source /opt/ros/humble/setup.bash
 source install/setup.bash
 
 
@@ -27,10 +26,7 @@ grep -q -E "data: 3\.[0-9]*" $log_file && echo "最小値(約3.0)を確認" || {
 
 grep -q -E "data: 6\.9[0-9]*" $log_file && echo "最大値(約7.0)を確認" || { echo "最大値が確認できません"; res=1; }
 
-ps -p $NODE_PID $TOPIC_PID > /dev/null 2>&1
-if [ $? -eq 0 ]; then
-    kill $NODE_PID $TOPIC_PID
-fi
+kill $NODE_PID $TOPIC_PID
 wait $NODE_PID $TOPIC_PID 2>/dev/null
 
 if [ "$res" -eq 0 ]; then
