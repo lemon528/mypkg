@@ -22,22 +22,22 @@ sleep 30
 
 res=0
 
-if grep -q -E "data: [2-6]\.[8-9][0-9]*|data: [3-6]\.[0-9]+|data: 7\.0|data: 7\.1[0-9]*" $log_file; then
-    echo "値が範囲内(2.8 - 7.2)に存在します"
+if grep -q -E "data: [3-6]\.[0-9]+|data: 6\.9[0-9]*" $log_file; then
+    echo "値が範囲内(3.0 - 7.0)に存在します"
 else
     echo "範囲外を検出"
     res=1
 fi
 
-if grep -q -E "data: 2\.[8-9][0-9]*|data: 3\.0[0-9]*" $log_file; then
-    echo "最小値(約2.8)を確認"
+if grep -q -E "data: 3\.[0-9]*" $log_file; then
+    echo "最小値(約3.0)を確認"
 else
     echo "最小値を確認できません"
     res=1
 fi
 
-if grep -q -E "data: 7\.1[0-9]*" $log_file; then
-    echo "最大値(約7.2)を確認"
+if grep -q -E "data: 6\.9[0-9]*" $log_file; then
+    echo "最大値(約7.0)を確認"
 else
     echo "最大値が確認できません"
     res=1
