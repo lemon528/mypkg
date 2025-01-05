@@ -8,6 +8,8 @@ dir=~
 cd $dir/ros2_ws
 colcon build
 source install/setup.bash
+source install/local_setup.bash
+source $dir/.bashrc
 
 
 log_file="/tmp/sensor_simulator.log"
