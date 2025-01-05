@@ -1,36 +1,46 @@
 # mypkg
 [![test](https://github.com/lemon528/robosys2024/actions/workflows/test.yml/badge.svg)](https://github.com/lemon528/robosys2024/actions/workflows/test.yml)  
-このリポジトリは、ROS2パッケージ`mypkg`を提供します。
+このリポジトリはROS2のパッケージです。
 
-## sensor_simulator
-ノイズ付きセンサー値をシミュレートし、それをトピックに配信します。
+## ノード
+- ノード名:`sensor_simulator`
+    - 1秒ごとにサイン波に基づいたセンサー値をシミュレートします。
+    - 中心値5.0, 振幅2.0の範囲(3.0 ~ 7.0)で変動する値を`/sensor_data`に1秒ごと送信します。
+
+## トピック
+- トピック名:`/sensor_data`
+    - シミュレーションされたセンサー値を送信します。　　　
 
 ## 実行方法と出力結果
-- sensor_simulator
+2端末を利用します。
+- 端末1
 ```
 $ ros2 run mypkg sensor_simulator
-[INFO] [1735812505.849612880] [noisy_sensor_simulator]: Noisy Sensor value: 6.71
-[INFO] [1735812506.849660507] [noisy_sensor_simulator]: Noisy Sensor value: 5.41
-[INFO] [1735812507.849832367] [noisy_sensor_simulator]: Noisy Sensor value: 3.67
 ```
 
-- sensor_simulator.launch.py
+- 端末2
 ```
-$ ros2 launch mypkg sensor_simulator.launch.py
-[sensor_simulator-1] [INFO] [1735812559.734612598] [noisy_sensor_simulator]: Noisy Sensor value: 6.71
-[sensor_simulator-1] [INFO] [1735812560.734613589] [noisy_sensor_simulator]: Noisy Sensor value: 5.41
-[sensor_simulator-1] [INFO] [1735812561.735071482] [noisy_sensor_simulator]: Noisy Sensor value: 3.67
+$ ros2 topic echo /sensor_data
+data: 6.701807022094727
+---
+data: 6.9971818923950195
+---
+data: 6.803576469421387
+---
+data: 5.247146129608154
+---
+data: 4.265389442443848
+---
+data: 3.4634907245635986
+---
+data: 3.037783145904541
 ```
 
 ## 必要ソフトウェア
-- Python version 3.10 以上
-- Ubuntu version 22.04 LTS 以上
-- ROS2 Humble
+- Python
 
 ## テスト環境
-- Python 3.10.12
 - Ubuntu 22.04.5 LTS
-- ROS2 Humble
 
 ## ライセンス
 - このソフトウェアパッケージは、3条項BSDライセンスの下、再頒布および使用が許可されます。
