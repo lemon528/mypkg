@@ -12,7 +12,7 @@ class SensorSimulator(Node):
         super().__init__("sensor_simulator")
         self.publisher = self.create_publisher(Float32, "sensor_data", 10)
         self.step = 0
-        self.create_timer(2.0, self.publish_sensor_data)
+        self.create_timer(1.0, self.publish_sensor_data)
 
 
     def publish_sensor_data(self):
