@@ -20,14 +20,35 @@ sleep 30
 
 res=0
 
-grep -q -E "data: [3-6]\.[0-9]+|data: 6\.9[0-9]*" $log_file && echo "値が範囲内(3.0 - 7.0)に存在します。" || { echo "範囲外を検出"; res=1; }
+if grep -q -E "data: [3-6]\.[0-9]+|data: 6\.9[0-9]*" $log_file; then
+    echo "値が範囲内(3.0 - 7.0)に存在します"
+else
+    echo "範囲外を検出"
+    res=1
+fi
 
-grep -q -E "data: 3\.[0-9]*" $log_file && echo "最小値(約3.0)を確認" || { echo "最小値が確認できません"; res=1; }
+if grep -q -E "data: 3\.[0-9]*" $log_file; then
+    echo "最小値(約3.0)を確認"
+else
+    echo "最小値を確認できません"
+    res=1
+fi
 
-grep -q -E "data: 6\.9[0-9]*" $log_file && echo "最大値(約7.0)を確認" || { echo "最大値が確認できません"; res=1; }
+if grep -q -E "data: 6\.9[0-9]*" $log_file; then
+    echo "最大値(約7.0)を確認"
+else
+    echo "最大値が確認できません"
+    res=1
+fi
 
-kill $NODE_PID $TOPIC_PID
-wait $NODE_PID $TOPIC_PID 2>/dev/null
+
+if ps -p $NODE_PID > /dev/null 2>&1; then
+    kill $NODE_PID
+fi
+
+if ps -p $TOPIC_PID > /dev/null 2>&1; then
+    kill $TOPIC_PID
+fi
 
 if [ "$res" -eq 0 ]; then
     echo "全てのテストに成功しました。"
