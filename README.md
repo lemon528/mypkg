@@ -1,6 +1,6 @@
 # mypkg
 [![test](https://github.com/lemon528/robosys2024/actions/workflows/test.yml/badge.svg)](https://github.com/lemon528/robosys2024/actions/workflows/test.yml)  
-このリポジトリはROS2のパッケージです。
+このリポジトリは、センサー値をシミュレートするROS2のパッケージです。
 
 ## ノード
 - ノード名:`sensor_simulator`
@@ -35,7 +35,7 @@ data: 3.4634907245635986
 data: 3.037783145904541
 ```
 
-## 必要ソフトウェア
+## 必要なソフトウェア
 - Python
 
 ## テスト環境
